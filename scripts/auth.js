@@ -1,15 +1,15 @@
+import { API } from "./api.js";
+import { setLocal } from "./helpers.js";
+
 const authEle = {
-  loginForm: document.querySelector('#login'),
-  nameInp: document.querySelector('#name'),
-  passInp: document.querySelector('#pass'),
-  nameArea: document.querySelector('.name-warning'),
-  passArea: document.querySelector('.pass-warning'),
+  loginForm: document.querySelector("#login"),
+  nameInp: document.querySelector("#name"),
+  passInp: document.querySelector("#pass"),
+  nameArea: document.querySelector(".name-warning"),
+  passArea: document.querySelector(".pass-warning"),
 };
 
-
-const regex =
-"^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})";
-
+const regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})";
 
 const checkValues = (name, pass) => {
   let isPassError = false;
@@ -23,7 +23,7 @@ const checkValues = (name, pass) => {
     authEle.nameArea.innerHTML = `<p class="warning">İsim 3 karakterden uzun olmalı</p>`;
   } else {
     let isNameError = false;
-    authEle.nameArea.innerHTML = '';
+    authEle.nameArea.innerHTML = "";
   }
 
   if (!pass) {
@@ -37,7 +37,7 @@ const checkValues = (name, pass) => {
     authEle.passArea.innerHTML = `<p class="warning">Şifre yeterince güçlü değil</p>`;
   } else {
     isPassError = false;
-    authEle.passArea.innerHTML = '';
+    authEle.passArea.innerHTML = "";
   }
 
   if (isNameError || isPassError) {
@@ -47,16 +47,19 @@ const checkValues = (name, pass) => {
   }
 };
 
-
-authEle.loginForm.addEventListener('submit', (e) => {
+authEle.loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
- 
   const name = authEle.nameInp.value;
   const pass = authEle.passInp.value;
 
-  //   kontrolden geçerse hesap bilgilerini al
   if (checkValues(name, pass)) {
-      console.log('hesaba giriş yapılıyor')
+    API.getUser(name)
+      .then((data) => {
+        setLocal('USER', data);
+
+        window.location = "/";
+      })
+      .catch((err) => alert("Kullanıcı bilgilerine erişirken hata oluştu"));
   }
 });
