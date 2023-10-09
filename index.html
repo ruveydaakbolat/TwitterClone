@@ -38,13 +38,75 @@
           <i class="bi bi-enveloper-fill"></i>
           <span>Mesajlar</span>
         </li>
-        <button>
+        <li id="send">
           <i class="bi bi-send-fill"></i>
           <span>Gönder</span>
-        </button>
+        </li>
       </ul>
+      <div class="user-info">
+        <img id="profile-pic" src="/images/defaultt.png" />
+        <div>
+          <p id="user-name"></p>
+          <p id="user-tag"></p>
+          <button id="logout-btn">
+            <i class="bi bi-door-open-fill"></i>
+            <span>Çıkış Yap</span>
+          </button>
+        </div>
+      </div>
     </nav>
-    <main></main>
+
+    <main>
+      <header>Anasayfa</header>
+      <form id="post-tweet">
+        <img id="profile-pic" src="/images/defaultt.png" />
+        <div class="input-area">
+          <input placeholder="Neler oluyor?" type="text">
+          <div class="button">
+            <button>Tweetle</button>
+          </div>
+        </div>
+      </form>
+      <section class="tweets-area">
+        <div class="tweet">
+          <img id="user-img" src="/images/defaultt.png" >
+          <div class="body">
+            <div class="user">
+              <div>
+                <b>Deneme</b>
+                <p>@deneme</p>
+                <p>20 saat önce</p>
+              </div>
+              <i class="bi bi-three-dots"></i>
+            </div>
+            <div class="content">
+              <p>Atılan tweet'in yazı içeriği</p>
+              <img src="" >
+            </div>
+            <div class="buttons">
+              <button>
+                <i class="bi bi-chat"></i>
+                <span>35</span>
+              </button>
+              <button>
+                <i class="bi bi-recycle"></i>
+                <span>35</span>
+              </button>
+              <button>
+                <i class="bi bi-heart"></i>
+                <span>35</span>
+              </button>
+              <button>
+                <i class="bi bi-bookmark"></i>
+                <span>35</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
     <aside></aside>
+    <script src="main.js" type="module"></script>
   </body>
 </html>
