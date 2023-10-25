@@ -1,4 +1,5 @@
 @import "auth";
+@import "aside";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 @mixin ipad {
@@ -140,6 +141,7 @@ nav {
 main {
   height: 100vh;
   border: 1px solid rgb(60, 60, 60);
+  overflow: auto;
 
   header {
     padding: 20px;
@@ -194,7 +196,7 @@ main {
   display: flex;
   padding: 10px;
   gap: 15px;
-  border-bottom:  1px solid rgb(60, 60, 60);
+  border-bottom: 1px solid rgb(60, 60, 60);
   &:hover {
     background: rgb(28, 28, 28);
   }

@@ -19,8 +19,10 @@
       <ul>
         <img src="/images/x-logo.png" />
         <li>
-          <i class="bi bi-house-fill"></i>
-          <span>Anasayfa</span>
+          <a href="/">
+            <i class="bi bi-house-fill"></i>
+            <span>Anasayfa</span>
+          </a>
         </li>
         <li>
           <i class="bi bi-search"></i>
@@ -35,7 +37,7 @@
           <span>Yer İşaretleri</span>
         </li>
         <li>
-          <i class="bi bi-enveloper-fill"></i>
+          <i class="bi bi-envelope-fill"></i>
           <span>Mesajlar</span>
         </li>
         <li id="send">
@@ -61,15 +63,15 @@
       <form id="post-tweet">
         <img id="profile-pic" src="/images/defaultt.png" />
         <div class="input-area">
-          <input placeholder="Neler oluyor?" type="text">
+          <input placeholder="Neler oluyor?" type="text" />
           <div class="button">
             <button>Tweetle</button>
           </div>
         </div>
       </form>
       <section class="tweets-area">
-        <div class="tweet">
-          <img id="user-img" src="/images/defaultt.png" >
+        <!-- <div class="tweet">
+          <img id="user-img" src="/images/defaultt.png" />
           <div class="body">
             <div class="user">
               <div>
@@ -81,7 +83,7 @@
             </div>
             <div class="content">
               <p>Atılan tweet'in yazı içeriği</p>
-              <img src="" >
+              <img src="" />
             </div>
             <div class="buttons">
               <button>
@@ -102,11 +104,18 @@
               </button>
             </div>
           </div>
-        </div>
+        </div> -->
       </section>
     </main>
 
-    <aside></aside>
+    <aside>
+      <form>
+        <i class="bi bi-search"></i>
+        <input placeholder="ara" type="text" />
+      </form>
+    </aside>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/locale/tr.min.js"></script>
     <script src="main.js" type="module"></script>
   </body>
 </html>
