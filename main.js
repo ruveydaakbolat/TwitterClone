@@ -6,6 +6,9 @@ import {
   ele,
   renderTimeline,
   renderResults,
+  renderDetail,
+  renderDetailLoading,
+  renderUserPage,
 } from "./scripts/ui.js";
 
 const user = getLocal("USER");
@@ -18,6 +21,10 @@ const router = async () => {
   switch (page) {
     // tweet detay
     case "status":
+      renderDetailLoading();
+
+      const tweetData = await API.fetchData(`/tweet.php?id=${query}`);
+      renderDetail(tweetData);
       break;
     // arama sayfası
     case "search":
@@ -27,7 +34,17 @@ const router = async () => {
       break;
     // kullanıcı detay sayfası
     case "user":
-    //ana sayfayı ekrana bas
+      //ana sayfayı ekrana bas
+      renderLoader(ele.main);
+      const userInfo = await API.getUser(query);
+      renderUserPage(userInfo);
+      const outlet = document.querySelector(".page-bottom");
+      renderLoader(outlet);
+      const userTweet = await API.fetchData(
+        `/timeline.php?screenname=${query}`
+      );
+      renderTimeline(userTweet, outlet);
+      break;
     default:
       renderLoader(ele.tweetsArea);
 
@@ -61,4 +78,10 @@ ele.form.addEventListener("submit", (e) => {
   const query = e.target[0].value;
 
   location = `?page=search&q=${query}`;
+});
+
+ele.main.addEventListener("click", (e) => {
+  if (e.target.id === "back-btn") {
+    history.back();
+  }
 });
